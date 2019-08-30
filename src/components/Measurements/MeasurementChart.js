@@ -73,9 +73,9 @@ const MeasurementChart = props => {
       <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
       <XAxis
         tickFormatter={tick => moment(tick).format("h:mm:ss A")}
-        dataKey="at"
+        dataKey="at" padding={{ left: 40 }}
       />
-      <YAxis padding={{ top: 200 }} />
+      <YAxis type="number" domain={['dataMin', 'dataMax']} padding={{ top: 100 }} />
       <Tooltip />
     </LineChart>
   );
