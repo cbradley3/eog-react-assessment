@@ -11,6 +11,7 @@ import {
 } from 'recharts';
 import LinearProgress from '@material-ui/core/LinearProgress';
 import { Provider, createClient, useQuery } from 'urql';
+import moment from 'moment';
 
 const client = createClient({
   url: 'https://react.eogresources.com/graphql'
@@ -70,7 +71,7 @@ const MeasurementChart = props => {
     <LineChart width={900} height={400} data={measurements}>
       <Line type="monotone" dataKey="value" stroke="rgba(204, 0, 0, 1)" />
       <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
-      <XAxis dataKey="at" />
+      <XAxis tickFormatter={tick => moment(tick).format("h:mm:ss A")} dataKey="at" />
       <YAxis />
       <Tooltip />
     </LineChart>
