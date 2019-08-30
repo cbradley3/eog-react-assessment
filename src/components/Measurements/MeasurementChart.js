@@ -1,6 +1,6 @@
-import * as actions from '../../store/actions';
-import React, { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import * as actions from "../../store/actions";
+import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import {
   LineChart,
   Line,
@@ -8,13 +8,13 @@ import {
   XAxis,
   YAxis,
   Tooltip
-} from 'recharts';
-import LinearProgress from '@material-ui/core/LinearProgress';
-import { Provider, createClient, useQuery } from 'urql';
-import moment from 'moment';
+} from "recharts";
+import LinearProgress from "@material-ui/core/LinearProgress";
+import { Provider, createClient, useQuery } from "urql";
+import moment from "moment";
 
 const client = createClient({
-  url: 'https://react.eogresources.com/graphql'
+  url: "https://react.eogresources.com/graphql"
 });
 
 export default props => {
@@ -47,13 +47,13 @@ const MeasurementChart = props => {
   });
 
   const { data, fetching, error } = result;
-  
-    useEffect(() => {
-        if (error) {
-        dispatch({
-            type: actions.API_ERROR,
-            error: error.message
-        });
+
+  useEffect(() => {
+    if (error) {
+      dispatch({
+        type: actions.API_ERROR,
+        error: error.message
+      });
       return;
     }
     if (!data) return;
@@ -68,11 +68,14 @@ const MeasurementChart = props => {
   if (fetching) return <LinearProgress />;
 
   return (
-    <LineChart width={900} height={400} data={measurements}>
+    <LineChart width={900} height={600} data={measurements}>
       <Line type="monotone" dataKey="value" stroke="rgba(204, 0, 0, 1)" />
       <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
-      <XAxis tickFormatter={tick => moment(tick).format("h:mm:ss A")} dataKey="at" />
-      <YAxis />
+      <XAxis
+        tickFormatter={tick => moment(tick).format("h:mm:ss A")}
+        dataKey="at"
+      />
+      <YAxis padding={{ top: 200 }} />
       <Tooltip />
     </LineChart>
   );
