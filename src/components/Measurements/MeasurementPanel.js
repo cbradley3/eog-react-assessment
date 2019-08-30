@@ -1,23 +1,23 @@
-import * as actions from '../../store/actions';
-import React, { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { makeStyles } from '@material-ui/core/styles';
-import LinearProgress from '@material-ui/core/LinearProgress';
-import FormControl from '@material-ui/core/FormControl';
-import Select from '@material-ui/core/Select';
-import InputLabel from '@material-ui/core/InputLabel';
-import MenuItem from '@material-ui/core/MenuItem';
-import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
-import { Provider, createClient, useQuery } from 'urql';
-import CardHeader from '../CardHeader';
-import MeasurementChart from './MeasurementChart';
-import RecentMeasurement from './RecentMeasurement';
+import * as actions from "../../store/actions";
+import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { makeStyles } from "@material-ui/core/styles";
+import LinearProgress from "@material-ui/core/LinearProgress";
+import FormControl from "@material-ui/core/FormControl";
+import Select from "@material-ui/core/Select";
+import InputLabel from "@material-ui/core/InputLabel";
+import MenuItem from "@material-ui/core/MenuItem";
+import Card from "@material-ui/core/Card";
+import CardContent from "@material-ui/core/CardContent";
+import { Provider, createClient, useQuery } from "urql";
+import CardHeader from "../CardHeader";
+import MeasurementChart from "./MeasurementChart";
+import RecentMeasurement from "./RecentMeasurement";
 
 const useStyles = makeStyles(theme => ({
   root: {
-    display: 'flex',
-    flexWrap: 'wrap'
+    display: "flex",
+    flexWrap: "wrap"
   },
   formControl: {
     margin: theme.spacing(1),
@@ -27,12 +27,12 @@ const useStyles = makeStyles(theme => ({
     width: 200
   },
   card: {
-    margin: '6% 12%'
+    margin: "6% 12%"
   }
 }));
 
 const client = createClient({
-  url: 'https://react.eogresources.com/graphql'
+  url: "https://react.eogresources.com/graphql"
 });
 
 const query = `
@@ -54,7 +54,7 @@ const MeasurementPanel = () => {
 
   return (
     <Card className={classes.card}>
-      <CardHeader title="SELECT METRICS" />
+      <CardHeader title="EQUIPMENT MEASUREMENTS" />
       <CardContent>
         <MetricSelect />
       </CardContent>
@@ -66,7 +66,7 @@ const MetricSelect = () => {
 
   const [metrics, setMetrics] = useState();
 
-  const [selectedMetric, setSelectedMetric] = useState('');
+  const [selectedMetric, setSelectedMetric] = useState("");
 
   const dispatch = useDispatch();
 
@@ -103,8 +103,8 @@ const MetricSelect = () => {
           className={classes.select}
           value={selectedMetric}
           inputProps={{
-            name: 'metric',
-            id: 'metric-select'
+            name: "metric",
+            id: "metric-select"
           }}
           onChange={handleChange}
         >

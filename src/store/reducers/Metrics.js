@@ -1,7 +1,7 @@
 import * as actions from "../actions";
 
 const initialState = {
-  metric: "",
+  metric: ""
 };
 
 const metricsRecevied = (state, action) => {

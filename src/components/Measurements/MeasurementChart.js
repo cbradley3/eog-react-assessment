@@ -72,10 +72,15 @@ const MeasurementChart = props => {
       <Line type="monotone" dataKey="value" stroke="rgba(204, 0, 0, 1)" />
       <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
       <XAxis
-        tickFormatter={tick => moment(tick).format("h:mm:ss A")}
-        dataKey="at" padding={{ left: 40 }}
+        tickFormatter={tick => moment(tick * 100).format("h:mm A")}
+        dataKey="at"
+        padding={{ left: 40 }}
       />
-      <YAxis type="number" domain={['dataMin', 'dataMax']} padding={{ top: 100 }} />
+      <YAxis
+        type="number"
+        domain={["dataMin", "dataMax"]}
+        padding={{ top: 200 }}
+      />
       <Tooltip />
     </LineChart>
   );
